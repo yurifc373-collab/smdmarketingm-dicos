@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio — Yuri Fontana Correa | Gestor de Tráfego · Especialistas Médicos</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --azul: #0e7490;
+    --azul-escuro: #0c4a6e;
+    --azul-claro: #e0f2fe;
+    --cinza: #6b7280;
+    --cinza-claro: #f9fafb;
+    --verde: #059669;
+    --texto: #111827;
+    --borda: #e5e7eb;
+  }
+
+  body { font-family: 'Inter', sans-serif; color: var(--texto); background: #fff; font-size: 15px; line-height: 1.6; }
+
+  .hero {
+    background: linear-gradient(135deg, #0c4a6e 0%, #0e7490 100%);
+    color: #fff;
+    padding: 80px 40px 60px;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.3);
+    padding: 6px 18px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    margin-bottom: 24px;
+  }
+  .hero h1 { font-size: 42px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+  .hero h2 { font-size: 20px; font-weight: 400; opacity: .85; margin-bottom: 30px; }
+  .hero-contato { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; font-size: 14px; opacity: .9; }
+  .hero-contato span { display: flex; align-items: center; gap: 6px; }
+
+  .numeros { background: var(--azul-claro); padding: 50px 40px; }
+  .numeros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .numero-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(14,116,144,.1);
+    border: 1px solid var(--borda);
+  }
+  .numero-valor { font-size: 34px; font-weight: 800; color: var(--azul); display: block; line-height: 1.1; margin-bottom: 6px; }
+  .numero-label { font-size: 13px; color: var(--cinza); font-weight: 500; line-height: 1.4; }
+
+  .section { padding: 60px 40px; max-width: 1000px; margin: 0 auto; }
+  .section-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--azul); margin-bottom: 10px; }
+  .section-heading { font-size: 28px; font-weight: 700; color: var(--texto); margin-bottom: 32px; line-height: 1.3; }
+
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .sobre-texto p { color: var(--cinza); margin-bottom: 16px; font-size: 15px; }
+  .sobre-lista { list-style: none; }
+  .sobre-lista li { padding: 10px 0; border-bottom: 1px solid var(--borda); display: flex; gap: 10px; font-size: 14px; }
+  .sobre-lista li:last-child { border: none; }
+  .sobre-lista .label { font-weight: 600; color: var(--texto); min-width: 110px; }
+  .sobre-lista .val { color: var(--cinza); }
+
+  .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .case-card {
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  .case-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); }
+  .case-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--azul), #22d3ee);
+  }
+  .case-nicho {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--azul); background: var(--azul-claro);
+    padding: 3px 10px; border-radius: 99px; display: inline-block; margin-bottom: 14px;
+  }
+  .case-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+  .case-desc { font-size: 13px; color: var(--cinza); margin-bottom: 20px; }
+  .case-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .case-metric { background: var(--cinza-claro); border-radius: 10px; padding: 12px; text-align: center; }
+  .case-metric .val { font-size: 20px; font-weight: 800; color: var(--azul); display: block; }
+  .case-metric .lab { font-size: 11px; color: var(--cinza); font-weight: 500; }
+  .case-destaque {
+    margin-top: 16px; background: #f0fdf4; border: 1px solid #bbf7d0;
+    border-radius: 10px; padding: 10px 14px; font-size: 13px; color: var(--verde); font-weight: 500;
+  }
+
+  .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .servico-card { background: var(--cinza-claro); border-radius: 14px; padding: 24px 20px; border: 1px solid var(--borda); }
+  .servico-icon { font-size: 28px; margin-bottom: 12px; }
+  .servico-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .servico-card p { font-size: 13px; color: var(--cinza); line-height: 1.5; }
+
+  .nicho-section { background: var(--cinza-claro); border-radius: 20px; padding: 40px; margin: 0 40px 60px; }
+  .nicho-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 24px; }
+  .nicho-card { background: #fff; border-radius: 14px; padding: 24px; border: 1px solid var(--borda); }
+  .nicho-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .nicho-card p { font-size: 13px; color: var(--cinza); }
+  .nicho-tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 99px; font-weight: 600; margin-bottom: 12px; }
+  .tag-medico { background: #e0f2fe; color: var(--azul); }
+  .tag-estetico { background: #fdf4ff; color: #7e22ce; }
+
+  .contato-section { background: linear-gradient(135deg, #0c4a6e 0%, #0e7490 100%); color: #fff; text-align: center; padding: 60px 40px; }
+  .contato-section h2 { font-size: 30px; font-weight: 800; margin-bottom: 12px; }
+  .contato-section p { opacity: .85; margin-bottom: 32px; font-size: 16px; }
+  .contato-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 14px 28px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; transition: opacity .2s; }
+  .btn:hover { opacity: .85; }
+  .btn-white { background: #fff; color: var(--azul); }
+  .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,.6); color: #fff; }
+
+  footer { text-align: center; padding: 24px; font-size: 12px; color: var(--cinza); border-top: 1px solid var(--borda); }
+
+  @media print {
+    body { font-size: 12px; }
+    .hero { padding: 40px 30px 30px; }
+    .hero h1 { font-size: 30px; }
+    .section { padding: 30px; }
+    .nicho-section { margin: 0 30px 30px; padding: 24px; }
+  }
+  @media (max-width: 640px) {
+    .sobre-grid, .nicho-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 28px; }
+    .section { padding: 40px 20px; }
+    .nicho-section { margin: 0 20px 40px; padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">🏥 Especialista em Tráfego para Médicos Especialistas</div>
+  <h1>Yuri Fontana Correa</h1>
+  <h2>Gestor de Tráfego Pago · Especialista em Saúde & Medicina</h2>
+  <div class="hero-contato">
+    <span>📍 Curitiba/PR — Presencial & Remoto</span>
+    <span>📧 yurifc737@gmail.com</span>
+    <span>📱 (41) 98503-9647</span>
+    <span>⏱ 2 anos de experiência</span>
+  </div>
+</div>
+
+<div class="numeros">
+  <div class="numeros-grid">
+    <div class="numero-card">
+      <span class="numero-valor">31+</span>
+      <div class="numero-label">Contas de anúncio gerenciadas</div>
+    </div>
+    <div class="numero-card">
+      <span class="numero-valor">+1.984</span>
+      <div class="numero-label">Leads gerados em 30 dias</div>
+    </div>
+    <div class="numero-card">
+      <span class="numero-valor">R$ 1,34</span>
+      <div class="numero-label">Menor CPL alcançado</div>
+    </div>
+    <div class="numero-card">
+      <span class="numero-valor">R$ 10.7k+</span>
+      <div class="numero-label">Verba gerenciada/mês</div>
+    </div>
+    <div class="numero-card">
+      <span class="numero-valor">889k</span>
+      <div class="numero-label">Impressões no último mês</div>
+    </div>
+    <div class="numero-card">
+      <span class="numero-valor">527k</span>
+      <div class="numero-label">Pessoas alcançadas no mês</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Quem sou</div>
+  <h2 class="section-heading">Pacientes qualificados para clínicas e consultórios</h2>
+  <div class="sobre-grid">
+    <div class="sobre-texto">
+      <p>
+        Sou Yuri Fontana Correa, gestor de tráfego pago com 2 anos de experiência especializado em Meta Ads para o setor de saúde, com foco em endocrinologistas, otorrinolaringologistas, psiquiatras e ortopedistas.
+      </p>
+      <p>
+        Entendo a jornada do paciente e sei como gerar agendamentos qualificados — pessoas com real intenção de consulta, não apenas curiosos. Cada lead gerado representa um potencial paciente de alto valor para o seu consultório.
+      </p>
+      <p>
+        Gerencio mais de 31 contas simultaneamente e atendo em Curitiba/PR de forma presencial, além de atender remotamente em todo o Brasil e no exterior.
+      </p>
+    </div>
+    <div>
+      <ul class="sobre-lista">
+        <li><span class="label">Especialidade</span><span class="val">Meta Ads (Facebook & Instagram)</span></li>
+        <li><span class="label">Nicho principal</span><span class="val">Endocrinologia · Otorrino · Psiquiatria · Ortopedia</span></li>
+        <li><span class="label">Foco</span><span class="val">Agendamentos & Leads qualificados</span></li>
+        <li><span class="label">Localização</span><span class="val">Curitiba/PR — Presencial & Remoto</span></li>
+        <li><span class="label">Formação</span><span class="val">Comunidade Subido de Tráfego</span></li>
+        <li><span class="label">Disponibilidade</span><span class="val">Aberto a novos clientes</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="section-title">Resultados comprovados</div>
+  <h2 class="section-heading">Cases reais de performance</h2>
+  <div class="cases-grid">
+
+    <div class="case-card">
+      <div class="case-nicho">Endocrinologia · Leads</div>
+      <h3>Endocrinologista — 390 Leads em 30 dias</h3>
+      <p class="case-desc">Campanha de captação de pacientes com segmentação por região e interesse em consultas de endocrinologia.</p>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="val">390</span><span class="lab">Leads gerados</span></div>
+        <div class="case-metric"><span class="val">R$ 1,34</span><span class="lab">Custo por lead</span></div>
+        <div class="case-metric"><span class="val">R$ 524</span><span class="lab">Investimento</span></div>
+        <div class="case-metric"><span class="val">2,66%</span><span class="lab">CTR</span></div>
+      </div>
+      <div class="case-destaque">✅ Menor CPL do portfólio — R$1,34/lead</div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-nicho">Otorrinolaringologia · Alto Volume</div>
+      <h3>Clínica de Otorrino — 457 Leads em 30 dias</h3>
+      <p class="case-desc">Maior volume de leads em uma única conta no período. Múltiplas campanhas com otimização por CBO para escala.</p>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="val">457</span><span class="lab">Leads gerados</span></div>
+        <div class="case-metric"><span class="val">R$ 4,17</span><span class="lab">Custo por lead</span></div>
+        <div class="case-metric"><span class="val">R$ 1.905</span><span class="lab">Investimento</span></div>
+        <div class="case-metric"><span class="val">3,43%</span><span class="lab">CTR</span></div>
+      </div>
+      <div class="case-destaque">✅ Maior volume absoluto de leads no período</div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-nicho">Psiquiatria & Ortopedia · LTV Alto</div>
+      <h3>Clínica Especializada — 10 Consultas Agendadas</h3>
+      <p class="case-desc">Campanha focada em agendamentos com conversão direta — pacientes com alta probabilidade de fechar tratamento.</p>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="val">10</span><span class="lab">Pacientes agendados</span></div>
+        <div class="case-metric"><span class="val">R$ 30k</span><span class="lab">LTV máx. por paciente</span></div>
+        <div class="case-metric"><span class="val">R$ 100</span><span class="lab">Ticket consulta</span></div>
+        <div class="case-metric"><span class="val">Alto</span><span class="lab">ROI potencial</span></div>
+      </div>
+      <div class="case-destaque">✅ LTV de R$1.500 – R$30.000 por paciente</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="nicho-section">
+  <div class="section-title">Segmentos de atuação em saúde</div>
+  <h2 style="font-size:24px; font-weight:700; margin-bottom:6px;">Especialista em médicos de alta conversão</h2>
+  <div class="nicho-grid">
+    <div class="nicho-card">
+      <div class="nicho-tag tag-medico">🧬 Endocrinologia</div>
+      <h3>Endocrinologistas</h3>
+      <p>Captação de pacientes para endocrinologistas com campanhas segmentadas por perfil e intenção. Foco em diabetes, tireoide, obesidade e síndrome metabólica — especialidade de alto recorrência.</p>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-tag tag-medico">👂 Otorrinolaringologia</div>
+      <h3>Otorrinolaringologistas</h3>
+      <p>Geração de agendamentos para otorrinos com alta demanda reprimida. Campanhas de captação para rinite, sinusite, ronco, perda auditiva e cirurgias eletivas de alta conversão.</p>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-tag tag-estetico">🧠 Psiquiatria</div>
+      <h3>Psiquiatras</h3>
+      <p>Estratégias de captação respeitosas e eficientes para psiquiatras. Pacientes com alta intenção de consulta, campanhas que equilibram volume e qualificação dentro das normas do CFM.</p>
+    </div>
+    <div class="nicho-card">
+      <div class="nicho-tag tag-estetico">🦴 Ortopedia</div>
+      <h3>Ortopedistas</h3>
+      <p>Agendamentos qualificados para ortopedistas com foco em procedimentos eletivos e urgências. Segmentação por região, faixa etária e perfil de queixa para maximizar conversão em consultas e cirurgias.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0">
+  <div class="section-title">O que ofereço</div>
+  <h2 class="section-heading">Serviços</h2>
+  <div class="servicos-grid">
+    <div class="servico-card">
+      <div class="servico-icon">🎯</div>
+      <h3>Captação de Pacientes</h3>
+      <p>Campanhas focadas em gerar agendamentos reais — não apenas cliques. Pacientes com perfil e intenção de consulta.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icon">📋</div>
+      <h3>Estratégia de Criativos</h3>
+      <p>Orientação para anúncios que respeitam as normas do CFM e convertem: antes/depois, depoimentos, autoridade.</p>
+    </div>
+    <div class="servico-card">
+      <div class="servico-icon">📊</div>
+      <h3>Relatórios Mensais</h3>
+      <p>Dashboards claros com CPL, CTR, alcance e número de pacientes gerados. Transparência total nos resultados.</p>
+    </div>
+  </div>
+</div>
+
+<div class="contato-section">
+  <h2>Quer mais pacientes no seu consultório?</h2>
+  <p>Entre em contato e veja como posso gerar agendamentos qualificados para o seu negócio.</p>
+  <div class="contato-btns">
+    <a href="https://wa.me/5541985039647" class="btn btn-white">💬 WhatsApp</a>
+    <a href="mailto:yurifc737@gmail.com" class="btn btn-outline">✉️ yurifc737@gmail.com</a>
+  </div>
+</div>
+
+<footer>
+  Yuri Fontana Correa · Gestor de Tráfego Pago · Curitiba/PR · yurifc737@gmail.com · (41) 98503-9647
+</footer>
+
+</body>
+</html>
